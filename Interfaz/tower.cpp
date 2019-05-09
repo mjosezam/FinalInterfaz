@@ -20,7 +20,6 @@ Tower::Tower(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem (){
    int randheight = rand()%10;
    int posx=randwidth*66.5+72;
    int posy=randheight*64+29;
-   cout << posx << "  " << posy << endl;
    setPos(posx,posy);
 
 
@@ -31,7 +30,6 @@ Tower::Tower(QGraphicsItem *parent):QObject(), QGraphicsPixmapItem (){
    int SCALE_FACTORX = 44;
    int SCALE_FACTORY = 60;
    for (size_t i =0,n=points.size();i<n;i++){
-       qApp->processEvents();
        points[i].rx()*=SCALE_FACTORX;
        points[i].ry()*=SCALE_FACTORY;
      }
@@ -63,7 +61,7 @@ void Tower::kill()
   QPointF enemy=QPointF(0,0);
   for(size_t i =0,n = collide_items.size();i<n;i++){
       qApp->processEvents();
-      MyPlayer * player = dynamic_cast<MyPlayer *>(collide_items[i]);
+      MyPlayer * player = dynamic_cast<MyPlayer*>(collide_items[i]);
       if (player){
           double this_dist = distanceTo(player);
           if (this_dist<closest){

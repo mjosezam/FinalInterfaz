@@ -133,7 +133,6 @@ void Game::spawn(){
     }
   int t = 0;
   if (t==0){
-      cout << i << endl;
       Tower * tower = new Tower();
       scene->addItem(tower);
       i++;

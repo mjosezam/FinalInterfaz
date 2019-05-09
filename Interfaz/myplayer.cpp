@@ -21,6 +21,6 @@ void MyPlayer::moveArr(int arr[7][2]){
         int x = arr[i][0]*60;
         int y = arr[i][1]*60;
         setPos(x,y);
-        sleep(2);
+        sleep(3);
     }
 }

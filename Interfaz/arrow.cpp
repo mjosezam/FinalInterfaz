@@ -18,12 +18,13 @@ Arrow::Arrow(QGraphicsItem *parent)
   move_timer->start(0.1);
 }
 
-void Arrow::move(){/**
-  qApp->processEvents();
+void Arrow::move(){
   QList<QGraphicsItem *> colliding_items = collidingItems();
   for(int i=0,n=colliding_items.size();i<n;i++){
       qApp->processEvents();
       if(typeid(*(colliding_items[i]))==typeid (MyPlayer)){
+          cout << "tres" << endl;
+          qApp->processEvents();
           g->vida->setPlainText(QString::number(g->player->vida-1));
           g->player->vida--;
           scene()->removeItem(this);
@@ -40,7 +41,6 @@ void Arrow::move(){/**
               g->i=0;
               g->timer->start(1);
             }
-          delete this;
           return;
         }
    }
@@ -48,10 +48,9 @@ void Arrow::move(){/**
       delete  this;
       return;
     }
-  qApp->processEvents();
   int mov = 20;
   double cita = rotation();
   double dy = mov * qSin(qDegreesToRadians(cita));
   double dx = mov * cos(qDegreesToRadians(cita));
   setPos(x()+dx,y()+dy);
-**/}
+}
